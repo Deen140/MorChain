@@ -1,18 +1,18 @@
-// Copyright 2019 The go-ethereum Authors
-// This file is part of go-ethereum.
+// Copyright 2019 The go-morchain Authors
+// This file is part of go-morchain.
 //
-// go-ethereum is free software: you can redistribute it and/or modify
+// go-morchain is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// go-ethereum is distributed in the hope that it will be useful,
+// go-morchain is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with go-ethereum. If not, see <http://www.gnu.org/licenses/>.
+// along with go-morchain. If not, see <http://www.gnu.org/licenses/>.
 
 package main
 
@@ -24,13 +24,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum/cmd/devp2p/internal/v4test"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/internal/flags"
-	"github.com/ethereum/go-ethereum/p2p/discover"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/params"
+	"github.com/morchain/go-morchain/cmd/devp2p/internal/v4test"
+	"github.com/morchain/go-morchain/common"
+	"github.com/morchain/go-morchain/crypto"
+	"github.com/morchain/go-morchain/internal/flags"
+	"github.com/morchain/go-morchain/p2p/discover"
+	"github.com/morchain/go-morchain/p2p/enode"
+	"github.com/morchain/go-morchain/params"
 	"github.com/urfave/cli/v2"
 )
 
