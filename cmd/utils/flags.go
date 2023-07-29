@@ -1,20 +1,20 @@
-// Copyright 2015 The go-ethereum Authors
-// This file is part of go-ethereum.
+// Copyright 2015 The go-morchain Authors
+// This file is part of go-morchain.
 //
-// go-ethereum is free software: you can redistribute it and/or modify
+// go-morchain is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// go-ethereum is distributed in the hope that it will be useful,
+// go-morchain is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with go-ethereum. If not, see <http://www.gnu.org/licenses/>.
+// along with go-morchain. If not, see <http://www.gnu.org/licenses/>.
 
-// Package utils contains internal helper functions for go-ethereum commands.
+// Package utils contains internal helper functions for go-morchain commands.
 package utils
 
 import (
@@ -34,46 +34,46 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/ethereum/go-ethereum/accounts/keystore"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/fdlimit"
-	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/ethereum/go-ethereum/core"
-	"github.com/ethereum/go-ethereum/core/rawdb"
-	"github.com/ethereum/go-ethereum/core/txpool"
-	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/core/vm"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/crypto/kzg4844"
-	"github.com/ethereum/go-ethereum/eth"
-	ethcatalyst "github.com/ethereum/go-ethereum/eth/catalyst"
-	"github.com/ethereum/go-ethereum/eth/downloader"
-	"github.com/ethereum/go-ethereum/eth/ethconfig"
-	"github.com/ethereum/go-ethereum/eth/filters"
-	"github.com/ethereum/go-ethereum/eth/gasprice"
-	"github.com/ethereum/go-ethereum/eth/tracers"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/ethdb/remotedb"
-	"github.com/ethereum/go-ethereum/ethstats"
-	"github.com/ethereum/go-ethereum/graphql"
-	"github.com/ethereum/go-ethereum/internal/ethapi"
-	"github.com/ethereum/go-ethereum/internal/flags"
-	"github.com/ethereum/go-ethereum/les"
-	lescatalyst "github.com/ethereum/go-ethereum/les/catalyst"
-	"github.com/ethereum/go-ethereum/log"
-	"github.com/ethereum/go-ethereum/metrics"
-	"github.com/ethereum/go-ethereum/metrics/exp"
-	"github.com/ethereum/go-ethereum/metrics/influxdb"
-	"github.com/ethereum/go-ethereum/miner"
-	"github.com/ethereum/go-ethereum/node"
-	"github.com/ethereum/go-ethereum/p2p"
-	"github.com/ethereum/go-ethereum/p2p/enode"
-	"github.com/ethereum/go-ethereum/p2p/nat"
-	"github.com/ethereum/go-ethereum/p2p/netutil"
-	"github.com/ethereum/go-ethereum/params"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/rpc"
+	"github.com/morchain/go-morchain/accounts"
+	"github.com/morchain/go-morchain/accounts/keystore"
+	"github.com/morchain/go-morchain/common"
+	"github.com/morchain/go-morchain/common/fdlimit"
+	"github.com/morchain/go-morchain/common/hexutil"
+	"github.com/morchain/go-morchain/core"
+	"github.com/morchain/go-morchain/core/rawdb"
+	"github.com/morchain/go-morchain/core/txpool"
+	"github.com/morchain/go-morchain/core/types"
+	"github.com/morchain/go-morchain/core/vm"
+	"github.com/morchain/go-morchain/crypto"
+	"github.com/morchain/go-morchain/crypto/kzg4844"
+	"github.com/morchain/go-morchain/eth"
+	ethcatalyst "github.com/morchain/go-morchain/eth/catalyst"
+	"github.com/morchain/go-morchain/eth/downloader"
+	"github.com/morchain/go-morchain/eth/ethconfig"
+	"github.com/morchain/go-morchain/eth/filters"
+	"github.com/morchain/go-morchain/eth/gasprice"
+	"github.com/morchain/go-morchain/eth/tracers"
+	"github.com/morchain/go-morchain/ethdb"
+	"github.com/morchain/go-morchain/ethdb/remotedb"
+	"github.com/morchain/go-morchain/ethstats"
+	"github.com/morchain/go-morchain/graphql"
+	"github.com/morchain/go-morchain/internal/ethapi"
+	"github.com/morchain/go-morchain/internal/flags"
+	"github.com/morchain/go-morchain/les"
+	lescatalyst "github.com/morchain/go-morchain/les/catalyst"
+	"github.com/morchain/go-morchain/log"
+	"github.com/morchain/go-morchain/metrics"
+	"github.com/morchain/go-morchain/metrics/exp"
+	"github.com/morchain/go-morchain/metrics/influxdb"
+	"github.com/morchain/go-morchain/miner"
+	"github.com/morchain/go-morchain/node"
+	"github.com/morchain/go-morchain/p2p"
+	"github.com/morchain/go-morchain/p2p/enode"
+	"github.com/morchain/go-morchain/p2p/nat"
+	"github.com/morchain/go-morchain/p2p/netutil"
+	"github.com/morchain/go-morchain/params"
+	"github.com/morchain/go-morchain/rlp"
+	"github.com/morchain/go-morchain/rpc"
 	pcsclite "github.com/gballet/go-libpcsclite"
 	gopsutil "github.com/shirou/gopsutil/mem"
 	"github.com/urfave/cli/v2"
@@ -139,7 +139,7 @@ var (
 	}
 	MainnetFlag = &cli.BoolFlag{
 		Name:     "mainnet",
-		Usage:    "Ethereum mainnet",
+		Usage:    "morchain mainnet",
 		Category: flags.EthCategory,
 	}
 	RinkebyFlag = &cli.BoolFlag{
@@ -1889,14 +1889,14 @@ func SetDNSDiscoveryDefaults(cfg *ethconfig.Config, genesis common.Hash) {
 	}
 }
 
-// RegisterEthService adds an Ethereum client to the stack.
+// RegisterEthService adds an morchain client to the stack.
 // The second return value is the full node instance, which may be nil if the
 // node is running as a light client.
-func RegisterEthService(stack *node.Node, cfg *ethconfig.Config) (ethapi.Backend, *eth.Ethereum) {
+func RegisterEthService(stack *node.Node, cfg *ethconfig.Config) (ethapi.Backend, *eth.morchain) {
 	if cfg.SyncMode == downloader.LightSync {
 		backend, err := les.New(stack, cfg)
 		if err != nil {
-			Fatalf("Failed to register the Ethereum service: %v", err)
+			Fatalf("Failed to register the morchain service: %v", err)
 		}
 		stack.RegisterAPIs(tracers.APIs(backend.ApiBackend))
 		if err := lescatalyst.Register(stack, backend); err != nil {
@@ -1906,7 +1906,7 @@ func RegisterEthService(stack *node.Node, cfg *ethconfig.Config) (ethapi.Backend
 	}
 	backend, err := eth.New(stack, cfg)
 	if err != nil {
-		Fatalf("Failed to register the Ethereum service: %v", err)
+		Fatalf("Failed to register the morchain service: %v", err)
 	}
 	if cfg.LightServ > 0 {
 		_, err := les.NewLesServer(stack, backend, cfg)
@@ -1921,10 +1921,10 @@ func RegisterEthService(stack *node.Node, cfg *ethconfig.Config) (ethapi.Backend
 	return backend.APIBackend, backend
 }
 
-// RegisterEthStatsService configures the Ethereum Stats daemon and adds it to the node.
+// RegisterEthStatsService configures the morchain Stats daemon and adds it to the node.
 func RegisterEthStatsService(stack *node.Node, backend ethapi.Backend, url string) {
 	if err := ethstats.New(stack, backend, backend.Engine(), url); err != nil {
-		Fatalf("Failed to register the Ethereum Stats service: %v", err)
+		Fatalf("Failed to register the morchain Stats service: %v", err)
 	}
 }
 
@@ -1950,7 +1950,7 @@ func RegisterFilterAPI(stack *node.Node, backend ethapi.Backend, ethcfg *ethconf
 }
 
 // RegisterFullSyncTester adds the full-sync tester service into node.
-func RegisterFullSyncTester(stack *node.Node, eth *eth.Ethereum, path string) {
+func RegisterFullSyncTester(stack *node.Node, eth *eth.morchain, path string) {
 	blob, err := os.ReadFile(path)
 	if err != nil {
 		Fatalf("Failed to read block file: %v", err)
