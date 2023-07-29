@@ -10,7 +10,7 @@ Official Golang execution layer implementation of the Morchain protocol.
 [![Discord](https://img.shields.io/badge/discord-join%20chat-blue.svg)](https://discord.gg/nthXNEv)](https://github.com/Deen140/MorChain)
 
 Automated builds are available for stable releases and the unstable master branch. Binary
-archives are published at https://morchain.Morchain.org/downloads/.
+archives are published at (https://github.com/Deen140/MorChain)
 
 ## Building the source
 
