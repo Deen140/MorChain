@@ -1,18 +1,18 @@
-// Copyright 2022 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2022 The go-morchain Authors
+// This file is part of the go-morchain library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-morchain library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-morchain library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-morchain library. If not, see <http://www.gnu.org/licenses/>.
 
 package types
 
@@ -24,9 +24,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ethereum/go-ethereum/beacon/merkle"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/morchain/go-morchain/beacon/merkle"
+	"github.com/morchain/go-morchain/common"
+	"github.com/morchain/go-morchain/common/hexutil"
 	"gopkg.in/yaml.v3"
 )
 
@@ -43,7 +43,7 @@ type Fork struct {
 	// Epoch when given fork version is activated
 	Epoch uint64
 
-	// Fork version, see https://github.com/ethereum/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#custom-types
+	// Fork version, see https://github.com/morchain/consensus-specs/blob/dev/specs/phase0/beacon-chain.md#custom-types
 	Version []byte
 
 	// calculated by computeDomain, based on fork version and genesis validators root
