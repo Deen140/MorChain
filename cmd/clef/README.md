@@ -2,7 +2,7 @@
 
 Clef can be used to sign transactions and data and is meant as a(n eventual) replacement for Geth's account management. This allows DApps to not depend on Geth's account management. When a DApp wants to sign data (or a transaction), it can send the content to Clef, which will then provide the user with context and asks for permission to sign the content. If the users grants the signing request, Clef will send the signature back to the DApp.
 
-This setup allows a DApp to connect to a remote Ethereum node and send transactions that are locally signed. This can help in situations when a DApp is connected to an untrusted remote Ethereum node, because a local one is not available, not synchronised with the chain, or is a node that has no built-in (or limited) account management.
+This setup allows a DApp to connect to a remote morchain node and send transactions that are locally signed. This can help in situations when a DApp is connected to an untrusted remote morchain node, because a local one is not available, not synchronised with the chain, or is a node that has no built-in (or limited) account management.
 
 Clef can run as a daemon on the same machine, off a usb-stick like [USB armory](https://inversepath.com/usbarmory), or even a separate VM in a [QubesOS](https://www.qubes-os.org/) type setup.
 
@@ -27,7 +27,7 @@ COMMANDS:
 
 GLOBAL OPTIONS:
    --loglevel value        log level to emit to the screen (default: 4)
-   --keystore value        Directory for the keystore (default: "$HOME/.ethereum/keystore")
+   --keystore value        Directory for the keystore (default: "$HOME/.morchain/keystore")
    --configdir value       Directory for Clef configuration (default: "$HOME/.clef")
    --chainid value         Chain id to use for signing (1=mainnet, 4=Rinkeby, 5=Goerli) (default: 1)
    --lightkdf              Reduce key-derivation RAM & CPU usage at some expense of KDF strength
@@ -150,7 +150,7 @@ All hex encoded values must be prefixed with `0x`.
 
 #### Create new password protected account
 
-The signer will generate a new private key, encrypt it according to [web3 keystore spec](https://github.com/ethereum/wiki/wiki/Web3-Secret-Storage-Definition) and store it in the keystore directory.  
+The signer will generate a new private key, encrypt it according to [web3 keystore spec](https://github.com/morchain/wiki/wiki/Web3-Secret-Storage-Definition) and store it in the keystore directory.  
 The client is responsible for creating a backup of the keystore. If the keystore is lost there is no method of retrieving lost accounts.
 
 #### Arguments
@@ -336,7 +336,7 @@ Bash example:
 #### Arguments
   - content type [string]: type of signed data
      - `text/validator`: hex data with custom validator defined in a contract
-     - `application/clique`: [clique](https://github.com/ethereum/EIPs/issues/225) headers
+     - `application/clique`: [clique](https://github.com/morchain/EIPs/issues/225) headers
      - `text/plain`: simple hex data validated by `account_ecRecover`
   - account [address]: account to sign with
   - data [object]: data to sign
@@ -370,7 +370,7 @@ Response
 ### account_signTypedData
 
 #### Sign data
-   Signs a chunk of structured data conformant to [EIP-712](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md) and returns the calculated signature.
+   Signs a chunk of structured data conformant to [EIP-712](https://github.com/morchain/EIPs/blob/master/EIPS/eip-712.md) and returns the calculated signature.
 
 #### Arguments
   - account [address]: account to sign with
@@ -699,11 +699,11 @@ Invoked when a request for account listing has been made.
     {
       "accounts": [
         {
-          "url": "keystore:///home/bazonk/.ethereum/keystore/UTC--2017-11-20T14-44-54.089682944Z--123409812340981234098123409812deadbeef42",
+          "url": "keystore:///home/bazonk/.morchain/keystore/UTC--2017-11-20T14-44-54.089682944Z--123409812340981234098123409812deadbeef42",
           "address": "0x123409812340981234098123409812deadbeef42"
         },
         {
-          "url": "keystore:///home/bazonk/.ethereum/keystore/UTC--2017-11-23T21-59-03.199240693Z--cafebabedeadbeef34098123409812deadbeef42",
+          "url": "keystore:///home/bazonk/.morchain/keystore/UTC--2017-11-23T21-59-03.199240693Z--cafebabedeadbeef34098123409812deadbeef42",
           "address": "0xcafebabedeadbeef34098123409812deadbeef42"
         }
       ],
@@ -735,7 +735,7 @@ Invoked when a request for account listing has been made.
       "messages": [
         {
           "name": "message",
-          "value": "\u0019Ethereum Signed Message:\n4\u0001\u0002\u0003\u0004",
+          "value": "\u0019morchain Signed Message:\n4\u0001\u0002\u0003\u0004",
           "type": "text/plain"
         }
       ],
@@ -898,7 +898,7 @@ A UI should conform to the following rules.
 * A UI MUST NOT load any external resources that were not embedded/part of the UI package.
   * For example, not load icons, stylesheets from the internet
   * Not load files from the filesystem, unless they reside in the same local directory (e.g. config files)
-* A Graphical UI MUST show the blocky-identicon for ethereum addresses.
+* A Graphical UI MUST show the blocky-identicon for morchain addresses.
 * A UI MUST warn display appropriate warning if the destination-account is formatted with invalid checksum.
 * A UI MUST NOT open any ports or services
   * The signer opens the public port
@@ -919,4 +919,4 @@ There are a couple of implementation for a UI. We'll try to keep this list up to
 | QtSigner| https://github.com/holiman/qtsigner/| Python3/QT-based| :+1:| :+1:| :+1:| :+1:| :+1:| :x: |  :+1: (partially)|
 | GtkSigner| https://github.com/holiman/gtksigner| Python3/GTK-based| :+1:| :x:| :x:| :+1:| :+1:| :x: |  :x: |
 | Frame | https://github.com/floating/frame/commits/go-signer| Electron-based| :x:| :x:| :x:| :x:| ?| :x: |  :x: |
-| Clef UI| https://github.com/ethereum/clef-ui| Golang/QT-based| :+1:| :+1:| :x:| :+1:| :+1:| :x: |  :+1: (approve tx only)|
+| Clef UI| https://github.com/morchain/clef-ui| Golang/QT-based| :+1:| :+1:| :x:| :+1:| :+1:| :x: |  :+1: (approve tx only)|
