@@ -2,7 +2,7 @@
 
 Official Golang execution layer implementation of the Morchain protocol.
 
-[![API Reference](
+
 (https://discord.com/invite/BNcynmAxvp)](https://discord.com/invite/BNcynmAxvp)
 
 Automated builds are available for stable releases and the unstable master branch. Binary
