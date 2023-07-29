@@ -224,3 +224,4 @@ type WalletEvent struct {
 	Wallet Wallet          // Wallet instance arrived or departed
 	Kind   WalletEventType // Event type that happened in the system
 }
+
