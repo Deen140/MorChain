@@ -1,18 +1,18 @@
-// Copyright 2023 The go-ethereum Authors
-// This file is part of the go-ethereum library.
+// Copyright 2023 The go-morchain Authors
+// This file is part of the go-morchain library.
 //
-// The go-ethereum library is free software: you can redistribute it and/or modify
+// The go-morchain library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The go-ethereum library is distributed in the hope that it will be useful,
+// The go-morchain library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the go-ethereum library. If not, see <http://www.gnu.org/licenses/>.
+// along with the go-morchain library. If not, see <http://www.gnu.org/licenses/>.
 
 package types
 
@@ -22,9 +22,9 @@ import (
 	"fmt"
 	"math/bits"
 
-	"github.com/ethereum/go-ethereum/beacon/params"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/common/hexutil"
+	"github.com/morchain/go-morchain/beacon/params"
+	"github.com/morchain/go-morchain/common"
+	"github.com/morchain/go-morchain/common/hexutil"
 	bls "github.com/protolambda/bls12-381-util"
 )
 
@@ -39,7 +39,7 @@ type SerializedSyncCommittee [SerializedSyncCommitteeSize]byte
 // jsonSyncCommittee is the JSON representation of a sync committee.
 //
 // See data structure definition here:
-// https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/beacon-chain.md#syncaggregate
+// https://github.com/morchain/consensus-specs/blob/dev/specs/altair/beacon-chain.md#syncaggregate
 type jsonSyncCommittee struct {
 	Pubkeys   []hexutil.Bytes `json:"pubkeys"`
 	Aggregate hexutil.Bytes   `json:"aggregate_pubkey"`
@@ -140,7 +140,7 @@ func (s *SerializedSyncCommittee) Deserialize() (*SyncCommittee, error) {
 // SyncCommittee is a set of sync committee signer pubkeys and the aggregate key.
 //
 // See data structure definition here:
-// https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/beacon-chain.md#syncaggregate
+// https://github.com/morchain/consensus-specs/blob/dev/specs/altair/beacon-chain.md#syncaggregate
 type SyncCommittee struct {
 	keys      [params.SyncCommitteeSize]*bls.Pubkey
 	aggregate *bls.Pubkey
@@ -170,7 +170,7 @@ func (sc *SyncCommittee) VerifySignature(signingRoot common.Hash, signature *Syn
 // to a subset of the corresponding sync committee.
 //
 // See data structure definition here:
-// https://github.com/ethereum/consensus-specs/blob/dev/specs/altair/beacon-chain.md#syncaggregate
+// https://github.com/morchain/consensus-specs/blob/dev/specs/altair/beacon-chain.md#syncaggregate
 type SyncAggregate struct {
 	Signers   [params.SyncCommitteeBitmaskSize]byte `gencodec:"required" json:"sync_committee_bits"`
 	Signature [params.BLSSignatureSize]byte         `gencodec:"required" json:"sync_committee_signature"`
