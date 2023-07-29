@@ -4,9 +4,9 @@ Priority: extra
 Maintainer: {{.Author}}
 Build-Depends: debhelper (>= 8.0.0), {{.GoBootPackage}}
 Standards-Version: 3.9.5
-Homepage: https://ethereum.org
-Vcs-Git: https://github.com/ethereum/go-ethereum.git
-Vcs-Browser: https://github.com/ethereum/go-ethereum
+Homepage: https://morchain.org
+Vcs-Git: https://github.com/morchain/go-morchain.git
+Vcs-Browser: https://github.com/morchain/go-morchain
 
 Package: {{.Name}}
 Architecture: any
